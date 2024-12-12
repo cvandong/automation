@@ -1,0 +1,24 @@
+---
+- name: Grab Show Run and Backup Config
+  hosts: all
+  gather_facts: no
+  vars:
+    ansible_user: admin
+    ansible_password: ansible1
+    ansible_become_password: ansible1
+  tasks:
+    - name: Grab Show Run
+      ios_command:
+        commands:
+          - show running-config
+      register: running_config
+      become: yes
+
+    - name: Save Running-Config to Local File
+      copy:
+        content: "{{ running_config.stdout[0] }}"
+        dest: ""
+
+    - name: Print Backup Confirmation
+      debug:
+        msg: "Backup of {{ inventory_hostname }} saved successfully."
