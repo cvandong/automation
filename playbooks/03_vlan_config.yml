@@ -1,0 +1,15 @@
+---
+- name: CONFIGURE Vlans 
+  hosts: all
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: CREATE VLANS
+      ios_config:
+        lines:
+          - vlan 10
+          - vlan 20
+    - name: SAVE OUTPUT
+      copy:
+        content: "{{ output.stdout[0] }}"
+        dest: ""
