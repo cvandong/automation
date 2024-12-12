@@ -40,32 +40,3 @@
       debug:
         var: ssh_output.stdout[0]
 
-    - name: Configure MOTD
-      ios_config:
-        lines:
-          - banner motd ^C
-          - ********************************************************************
-          - LEGAL NOTICE: Access to this computing system and network is
-          - restricted to individuals explicitly authorized by [Your Organization].
-          - Unauthorized access, use, or modification of this system, its data,
-          - or associated resources is strictly proscribed and constitutes a
-          - violation of applicable federal, state, and international laws.
-          - 
-          - By proceeding, you irrevocably acknowledge and consent to the following:
-          - 1. This system and its data are the exclusive property of [Your Organization].
-          - 2. All activities on this system are subject to comprehensive monitoring,
-          -    interception, and archival for the purposes of operational security,
-          -    regulatory compliance, and investigative inquiries.
-          - 3. Any unauthorized attempt to access, alter, or disrupt the functionality
-          -    or integrity of this system will be met with rigorous enforcement of all
-          -    applicable statutes, including but not limited to criminal prosecution and
-          -    civil litigation.
-          - 4. Users waive all rights to any expectation of privacy or anonymity in relation
-          -    to their activities conducted on this system.
-          - 
-          - NOTICE: Accessing or using this system constitutes an unequivocal agreement to
-          - the aforementioned terms and conditions, and signifies your adherence to all
-          - relevant organizational and legal frameworks.
-          - ********************************************************************
-          - ^C
-
