@@ -1,15 +1,23 @@
 ---
-- name: CONFIGURE Vlans 
+- name: CONFIGURE VLANs
   hosts: all
   gather_facts: false
-  connection: local
+  vars:
+    ansible_user: admin
+    ansible_password: ansible1
+    ansible_connection: network_cli
+    ansible_become: yes
+    ansible_become_password: ansible1
+
   tasks:
-    - name: CREATE VLANS
+    - name: CREATE VLANs
       ios_config:
         lines:
           - vlan 10
           - vlan 20
-    - name: SAVE OUTPUT
-      copy:
-        content: "{{ output.stdout[0] }}"
-        dest: ""
+      register: output
+
+    - name: DISPLAY OUTPUT
+      debug:
+        var: output.stdout
+

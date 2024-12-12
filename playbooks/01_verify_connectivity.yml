@@ -7,11 +7,11 @@
     ansible_password: ansible1
     ansible_become: yes
     ansible_become_password: ansible1
+    ansible_connection: network_cli
 
   tasks:
     - name: Gather facts from Cisco switch
       cisco.ios.ios_facts:
-      become: yes
 
     - name: Display hostname
       debug:
